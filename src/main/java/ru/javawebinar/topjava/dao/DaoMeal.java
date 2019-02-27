@@ -10,4 +10,5 @@ public interface DaoMeal {
     void saveAll(Collection<Meal> meals);
     void save(Meal meal);
     void delete(long id);
+    Meal getById(long id);
 }

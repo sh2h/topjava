@@ -24,11 +24,22 @@
             <td ><fmt:formatDate value="${parseDate}" pattern="dd-MM-yy HH-mm"/></td>
             <td >${mealTo.description}</td>
             <td >${mealTo.calories}</td>
-            <td ><a  href="meals?${mealTo.id}">Редактировать</a></td>
-            <td ><a  href="meals?action=delete&id=${mealTo.id}">Удалить</a></td>
+            <td ><a  href=<c:url value="meals?id=${mealTo.id}"/>>Редактировать</a></td>
+            <td ><a  href=<c:url value="meals?action=delete&id=${mealTo.id}"/>>Удалить</a></td>
         </tr>
     </c:forEach>
 </table>
+
+
+<div style="margin: 50px 5px;">
+<form method="post" action="meals">
+    <input type="hidden" name="id"  value="${meal.id}"/>
+    Date: <label><input type="datetime-local"  name="dateTime" value="${meal.dateTime}"></label><br>
+    Description: <label><input type="text" name="description" value="${meal.description}"></label><br>
+    Calories: <label><input type="number" name="calories" value="${meal.calories}"></label><br>
+    <input type="submit" value="${meal.id<=0?"Добавить":"Изменить"}">
+</form>
+</div>
 
 </body>
 </html>
