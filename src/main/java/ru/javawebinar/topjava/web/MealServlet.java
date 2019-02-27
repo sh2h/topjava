@@ -37,12 +37,14 @@ public class MealServlet extends HttpServlet {
         long id=getId(req.getParameter("id"));
         if(action!=null&&action.equals("delete")){
             daoMeal.delete(id);
-            id=0;
-        }
+            log.debug("delete meal");
+            resp.sendRedirect("meals");
+        }else{
         log.debug("forward to meal");
         req.setAttribute("meal", daoMeal.getById(id));
         req.setAttribute("meals", MealsUtil.getFilteredWithExcess(daoMeal.getAll()));
         req.getRequestDispatcher("/meals.jsp").forward(req, resp);
+        }
     }
 
     @Override
