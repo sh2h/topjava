@@ -10,10 +10,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class DaoMealInMemory implements DaoMeal{
-    private static AtomicLong atomicId=new AtomicLong();
-    static {
-        atomicId.set(1);
-    }
+    private static AtomicLong atomicId=new AtomicLong(1);
     @Override
     public List<Meal> getAll() {
         List<Meal> result=new ArrayList<>();
