@@ -8,6 +8,7 @@ import ru.javawebinar.topjava.util.exception.NotFoundException;
 
 import java.util.List;
 
+
 import static ru.javawebinar.topjava.util.ValidationUtil.checkNotFound;
 import static ru.javawebinar.topjava.util.ValidationUtil.checkNotFoundWithId;
 
@@ -20,7 +21,6 @@ public class UserServiceImpl implements UserService {
     public UserServiceImpl(UserRepository repository) {
         this.repository = repository;
     }
-
     @Override
     public User create(User user) {
         return repository.save(user);
