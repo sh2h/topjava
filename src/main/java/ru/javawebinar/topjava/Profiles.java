@@ -17,7 +17,8 @@ public class Profiles {
         try {
             Class.forName("org.postgresql.Driver");
             return POSTGRES_DB;
-        } catch (ClassNotFoundException ex) {
+        }
+        catch (ClassNotFoundException ex) {
             try {
                 Class.forName("org.hsqldb.jdbcDriver");
                 return Profiles.HSQL_DB;
