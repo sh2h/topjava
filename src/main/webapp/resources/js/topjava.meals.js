@@ -31,6 +31,22 @@ $(function () {
             ]
         })
     });
+    $("#filter").click(function () {
+        isFilter=true;
+        updateTable();
+    })
     }
 );
+function updateTableWithFilter(){
+    $.get(context.ajaxUrl+"filter",$("#filterForm").serialize(),function (data) {
+        context.datatableApi.clear().rows.add(data).draw();
+        successNoty("Filtered");
+    });
+}
+function clearFilter() {
+   $("input[type=date]").val("");
+   $("input[type=time]").val("");
+   isFilter=false;
+   updateTable();
+}
 

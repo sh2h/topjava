@@ -31,10 +31,15 @@ public class AdminUIController extends AbstractUserController {
                                @RequestParam("name") String name,
                                @RequestParam("email") String email,
                                @RequestParam("password") String password) {
-
         User user = new User(id, name, email, password, Role.ROLE_USER);
         if (user.isNew()) {
             super.create(user);
         }
+    }
+    @Override
+    @PutMapping("/{id}/{enable}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void editEnable(@PathVariable int id,@PathVariable boolean enable){
+        super.editEnable(id,enable);
     }
 }

@@ -1,4 +1,5 @@
 let context, form;
+var isFilter=false;
 
 function makeEditable(ctx) {
     context = ctx;
@@ -32,9 +33,13 @@ function deleteRow(id) {
 }
 
 function updateTable() {
-    $.get(context.ajaxUrl, function (data) {
-        context.datatableApi.clear().rows.add(data).draw();
-    });
+    if(!isFilter) {
+        $.get(context.ajaxUrl, function (data) {
+            context.datatableApi.clear().rows.add(data).draw();
+        });
+    }else{
+        updateTableWithFilter();
+    }
 }
 
 function save() {
